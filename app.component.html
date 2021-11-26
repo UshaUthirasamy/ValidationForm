@@ -1,0 +1,44 @@
+<div>
+  <h2>Form Validation</h2>
+</div>
+<div class="container">
+  <form>
+        <div class="form-group">
+          <input type="text" id="inputFirstname" min-length = "3" maxlength="50" name="firstname" #firstName class="form-control" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'>
+          <label for="FirstName"> : First Name</label><br>
+          <span *ngIf = "errorFirstName"> 
+            {{ errorFirstName }} </span>
+        </div><br>
+        <div class="form-group">
+          <label>Gender : </label><br>
+          <input type="radio" name="Gender" class="checkbox" #genderFemale value="female" id="Female">
+          <label for="Female" class="littlechange">Female</label>&emsp;&emsp;
+          <input type="radio" name="Gender" class="checkbox" #genderMale value="male" id="Male">
+          <label for="Male" class="littlechange">Male</label><br>
+          <span *ngIf = "errorGender"> {{ errorGender }}</span>
+        </div><br>
+        <div class="form-group">
+          <input type="text" list="country" id="countrys" #country >
+          <datalist id="country">
+            <option>India</option>
+            <option>Usa</option> 
+            <option>Canada</option>
+          </datalist>
+          <label for="country"> : Country of Origin</label><br>
+          <span *ngIf = "errorCountry"> {{ errorCountry }}</span>
+        </div><br>
+        <div class="form-group">
+          <input type="text" id="city" name="city"  class="form-control" #city >
+          <label for="city"> : City of Origin</label><br>
+          <span *ngIf = "errorCity"> {{ errorCity }}</span>
+        </div><br>
+        <div class="form-group">
+          <input type="number" id="inputAge"  name="age" class="form-control" #age >
+          <label for="age"> : Age</label><br>
+          <span *ngIf = "errorAge"> {{ errorAge }}</span>
+        </div><br>
+      <div class="form-group">
+        <button type="submit" (click)="submit(firstName.value,genderFemale.checked,genderMale.checked,country.value,city.value,age.value)">Submit</button>
+      </div>
+  </form>
+</div>
